@@ -72,6 +72,10 @@
     <script>
         const ctx = document.getElementById('myChart').getContext('2d');
 
+        const urlParams = new URLSearchParams(window.location.search);
+        var DATA_TYPE = urlParams.get('data_type');
+        var UNIT_SIZE = urlParams.get('unit_size');
+
         function random_rgba() {
             var o = Math.round, r = Math.random, s = 255;
             return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
@@ -79,7 +83,7 @@
 
         async function getData(){
             const response = await fetch(
-                "https://bdl.stat.gov.pl/api/v1/data/by-variable/3623?format=json&unit-level=2"
+                "https://bdl.stat.gov.pl/api/v1/data/by-variable/"+ DATA_TYPE + "?format=json&unit-level=" + UNIT_SIZE
             );
             const data = await response.json();
 
