@@ -57,44 +57,13 @@
 
             <div class="hero-body">
                 <div class="container has-text-centered">
-                    <div class="column is-6 is-offset-3">
-                        <h1 class="title">
-                            Dashboard dla danych z GUS i NFZ
-                        </h1>
-                        <h2 class="subtitle">
-                            pozwala przeglądać w łatwy i przejrzysty sposób oraz porównywać dane z baz danych GUSu oraz NFZu.
-                        </h2>
+                    <div class="column is-12 is-offset-0">
                         <div class="box">
-                            <div class="field">
-                                <label class="label">Name</label>
-                                <div class="control">
-                                  <input class="input" type="text" placeholder="e.g Alex Smith">
-                                </div>
-                              </div>
-                              
-                              <div class="field">
-                                <label class="label">Email</label>
-                                <div class="control">
-                                  <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
-                                </div>
-                              </div>
-                            
-                            <p class="control">
-                                <a class="button is-info" href="wykresGus.html">
-                                    Szukaj
-                                </a>
-                            </p>
-                        </div>
-
-                        <div class="box">
-                            <label class="label">Przykłady</label>
-                            <a href="wykresGus.html">Jakieś tam szukanie</a>
-
+                            <canvas id="myChart" width="200" height="200"></canvas>
                         </div>
                         
 
                     </div>
-
                 </div>
             </div>
 
@@ -102,6 +71,71 @@
 
     <script>
         const ctx = document.getElementById('myChart').getContext('2d');
+
+        function random_rgba() {
+            var o = Math.round, r = Math.random, s = 255;
+            return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+        }
+
+        async function getData(){
+            const response = await fetch(
+                "https://bdl.stat.gov.pl/api/v1/data/by-variable/3623?format=json&unit-level=2"
+            );
+            const data = await response.json();
+
+            console.log(data);
+
+            var labels = [];
+            var years = [];
+            var datasets = {};
+
+            data["results"].forEach(element => {
+                labels.push(element["name"]);
+            });
+
+            data["results"][0]["values"].forEach(function(x){
+                var color = random_rgba();
+                datasets[x["year"]] = {"label": x["year"], "data": [] , "backgroundColor": color,  "borderColor": color}
+            })
+
+
+            data["results"].forEach(function(x){
+                x["values"].forEach(function(val){
+                    datasets[ val["year"] ]["data"].push(val["val"]);
+                });
+            });
+            
+
+            console.log(Object.values(datasets));
+
+            
+            const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: Object.values(datasets)
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: false,
+                    text: 'Tytuł wykresu'
+                }
+                }
+            }
+        });
+        }
+
+        getData();
+
+
+
+
+        /*
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -185,6 +219,7 @@
                 }
             }
         });
+        */
         </script>
 
         <footer class="footer">
