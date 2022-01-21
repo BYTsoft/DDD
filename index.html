@@ -56,44 +56,112 @@
             </div>
 
             <div class="hero-body">
-                <div class="container has-text-centered">
-                    <div class="column is-6 is-offset-3">
-                        <h1 class="title">
-                            Dashboard dla danych z GUS i NFZ
-                        </h1>
-                        <h2 class="subtitle">
-                            pozwala przeglądać w łatwy i przejrzysty sposób oraz porównywać dane z baz danych GUSu oraz NFZu.
-                        </h2>
-                        <div class="box">
+                <div class="container">
+                    <h1 class="title has-text-centered">
+                        Dashboard dla danych z GUS i NFZ
+                    </h1>
+                    <h2 class="subtitle has-text-centered">
+                        pozwala przeglądać w łatwy i przejrzysty sposób dane z baz danych GUSu oraz NFZu.
+                    </h2>
+                        <form class="box column is-12" action="wykresGus.html">
+                            <label class="label">CENY</label>
                             <div class="field">
-                                <label class="label">Name</label>
+                                <label class="label">Rodzaj danych</label>
                                 <div class="control">
-                                  <input class="input" type="text" placeholder="e.g Alex Smith">
+                                  <div class="select">
+                                    <select name="data_type" required>
+                                      <option value="4992">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - ryż - za 1kg</option>
+                                      <option value="4949">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - bułka pszenna - za 50g</option>
+                                      <option value="1615991">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - chleb żytni razowy - za 1kg</option>
+                                      <option value="8265">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - wódka czysta 40% - za 0,5l</option>
+                                      <option value="5003">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - piwo jasne pełne, butelkowane - za 0,5l</option>
+                                      <option value="453798">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - papierosy - za 20 szt.</option>
+                                      <option value="5071">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - energia elektryczna dla gospodarstw domowych (taryfa G-11) - za 1kWh</option>
+                                      <option value="5070">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - zimna woda z miejskiej sieci wodociągowej - za 1m3</option>
+                                      <option value="5076">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - wizyta u lekarza specjalisty</option>
+                                      <option value="5078">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - kurs samochodowy kat.B</option>
+                                      <option value="5039">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - odtwarzacz osobisty płyt CD 1 szt.</option>
+                                      <option value="5085">PRZECIĘTNE CENY DETALICZNE TOWARÓW I USŁUG KONSUMPCYJNYCH - strzyżenie włosów męskich</option>
+                                      <option value="64420">WSKAŹNIKI CEN - żywność i napoje bezalkoholowe</option>
+                                      <option value="64408">WSKAŹNIKI CEN - mieszkanie</option>
+                                    </select>
+                                  </div>
                                 </div>
-                              </div>
+                                
+                            </div>
                               
-                              <div class="field">
-                                <label class="label">Email</label>
+                            <div class="field">
+                                <label class="label">Jednostka organizacyjna</label>
                                 <div class="control">
-                                  <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+                                  <div class="select">
+                                    <select name="unit_size" required>
+                                      <option value="1">Makroregiony</option>
+                                      <option selected="selected" value="2">Województwa</option>
+                                      <option value="3">Regiony</option>
+                                    </select>
+                                  </div>
                                 </div>
-                              </div>
+                            </div>
                             
                             <p class="control">
-                                <a class="button is-info" href="wykresGus.html">
-                                    Szukaj
-                                </a>
+                                <input class="button is-info" type="submit" value="Szukaj">
                             </p>
-                        </div>
+                        </form>
 
-                        <div class="box">
-                            <label class="label">Przykłady</label>
-                            <a href="wykresGus.html">Jakieś tam szukanie</a>
+                        <form class="box column is-12" action="wykresGus.html">
+                            <label class="label">FINANSE PUBLICZNE</label>
+                            <div class="field">
+                                <label class="label">Rodzaj danych</label>
+                                <div class="control">
+                                  <div class="select">
+                                    <select name="data_type" required>
+                                      <option value="3507">Dochody budżetów powiatów</option>
+                                      <option value="60505">Dochody na 1 mieszkańca</option>
+                                      <option value="3509">Dochody własne budżetów powiatów - podatek dochodowy od osób fizycznych</option>
+                                      <option value="3510">Dochody własne budżetów powiatów - dochody z majątku powiatu</option>
+                                      <option value="3508">Dochody własne budżetów powiatów - razem</option>
+                                      <option value="60514">Wydatki na 1 mieszkańca - ogółem</option>
+                                      <option value="60515">Wydatki na 1 mieszkańca - w Dziale 801 - Oświata i wychowanie</option>
+                                      <option value="60513">Wydatki na 1 mieszkańca - w Dziale 921 - Kultura i ochrona dziedzictwa narodowego</option>
 
-                        </div>
-                        
+                                    </select>
+                                  </div>
+                                </div>
+                                
+                            </div>
+                              
+                            <div class="field">
+                                <label class="label">Jednostka organizacyjna</label>
+                                <div class="control">
+                                  <div class="select">
+                                    <select name="unit_size" required>
+                                      <option value="1">Makroregiony</option>
+                                      <option selected="selected" value="2">Województwa</option>
+                                    </select>
+                                  </div>
+                                </div>
+                            </div>
+                            
+                            <p class="control">
+                                <input class="button is-info" type="submit" value="Szukaj">
+                            </p>
+                        </form>
 
-                    </div>
+                        <form class="box column is-12" action="wykresGus.html">
+                            <label class="label">Przykładowe zapytania</label>
+                            <a class="block" href="wykresGus.html?data_type=5032&unit_size=2">
+                                Cena mydła toaletowego 100g w różnych wojewódźtwach na przestrzeni lat
+                            </a><br>
+                            <a class="block" href="wykresGus.html?data_type=148561&unit_size=2">
+                                Widzowie w kinach w poszczególnych wojewódźtwach na przestrzeni lat
+                            </a><br>
+                            <a class="block" href="wykresGus.html?data_type=60276&unit_size=2">
+                                Ilość kin w poszczególnych wojewódźtwach na przestrzeni lat
+                            </a><br>
+                            
+
+
+                        </form>
 
                 </div>
             </div>
